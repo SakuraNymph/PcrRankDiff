@@ -16,7 +16,7 @@ class PcrController extends Controller
     {
         $file = base_path('database.lock');
         if (!File::exists($file)) {
-            // $this->createDatabase();
+            $this->createDatabase();
             file_put_contents($file, '数据库已创建');
         }
         return view('welcome');
