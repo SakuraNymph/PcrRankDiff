@@ -275,9 +275,9 @@ class RankController extends Controller
 
         krsort($rank_info_data);
 
-        $authors = DB::table('authors')->orderBy('id')->get()->toArray();
+        $authors = DB::table('authors')->rightJoin('rank_infos', 'authors.id', '=', 'rank_infos.author_id')->orderBy('authors.id')->get()->toArray();
         foreach ($authors as $key => &$value) {
-            $value->color = $author_colors[$value->id];
+            $value->color = $author_colors[$value->author_id];
         }
         return view('result', ['data' => $rank_info_data, 'colors' => $authors]);
     }
