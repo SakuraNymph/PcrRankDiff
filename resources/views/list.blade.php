@@ -85,7 +85,7 @@ layui.config({
           {title:'序号', type:'numbers',  width: 80}
          ,{field:'nickname', title:'昵称', align: 'center', minWidth:120}
          ,{field:'role_id', title:'缩略图', align: 'center', minWidth: 120, templet: function(data) {
-            return '<img style="height:50px" src="/images/'+ data.role_id +'.webp"  class="layui-upload-img">';
+            return '<img style="height:50px" src="/images/'+ data.role_id +'.webp" title='+ data.role_id +'  class="layui-upload-img">';
           }}
           ,{field:'is_6', title:'是否6星开花', align: 'center', templet: function(data) {
           if (data.is_6) {

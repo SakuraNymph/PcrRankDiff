@@ -172,7 +172,7 @@ img {
       ,title: '查看结果'
       ,content: "{{ url('result') }}"
       ,maxmin: true
-      ,area: ['50%', '100%']
+      ,area: ['55%', '100%']
       // ,btn: ['确定', '取消']
       ,yes: function(index, layero){
         //点击确认触发 iframe 内容中的按钮提交

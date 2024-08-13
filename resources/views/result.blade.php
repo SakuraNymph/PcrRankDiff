@@ -65,7 +65,9 @@ h1 {
             <div class="layui-card-header">
               <h1>
                 @foreach($colors as $key => $val)
-                  <span class="{{ $val->color }}">{{ $val->name }}</span>
+                  @if(isset($val->color))
+                   <span class="{{ $val->color }}">{{ $val->name }}</span>
+                  @endif
                 @endforeach
               </h1>
             </div>
@@ -100,9 +102,21 @@ h1 {
 <script src="./layui/dom-to-image.min.js"></script>
 
 <script>
-    var element = document.getElementById('content');
+    var node = document.getElementById('content');
 
-    domtoimage.toPng(element)
+    // 设置缩放因子以提高图像分辨率
+    var scale = 3; // 2 倍分辨率
+    var options = {
+      quality: 1, // 对于 JPEG，设置为 0 到 1 之间的值
+      width: node.offsetWidth * scale,
+      height: node.offsetHeight * scale,
+      style: {
+        transform: `scale(${scale})`,
+        transformOrigin: 'top left'
+      }
+    };
+
+    domtoimage.toPng(node, options)
         .then(function (dataUrl) {
             // 创建一个Date对象，它将包含当前日期和时间
             var currentDate = new Date();
@@ -140,10 +154,6 @@ h1 {
     var o = layui.$
     ,colorpicker = layui.colorpicker
     ,form = layui.form;
-
-
-
-
   })
 </script>
 @endsection
